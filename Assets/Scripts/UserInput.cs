@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UserInput : MonoBehaviour
 {
+    public GameObject slot1;
     private Solitaire solitaire;
 
     // Start is called before the first frame update
@@ -30,9 +31,10 @@ public class UserInput : MonoBehaviour
                 if (hit.collider.CompareTag("Deck"))
                 {
                     Deck();
-                } else if (hit.collider.CompareTag("Card"))
+                }
+                else if (hit.collider.CompareTag("Card"))
                 {
-                    Card();
+                    Card(hit.collider.gameObject);
                 }
                 else if (hit.collider.CompareTag("Top"))
                 {
@@ -52,9 +54,10 @@ public class UserInput : MonoBehaviour
         solitaire.DealFromDeck();
     }
 
-    void Card()
+    void Card(GameObject selected)
     {
-        Debug.Log("Clicked on Card");
+        Debug.Log("Clicked on Card: " + selected.name);
+
     }
 
     void Top()
